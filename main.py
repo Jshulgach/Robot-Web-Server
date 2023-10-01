@@ -25,7 +25,7 @@ from robot_server import AsyncServer
 
 if __name__ == "__main__":
     try:
-        server = AsyncServer(ip='192.168.1.157', port=5000)
+        server = AsyncServer(ip='192.168.1.157', port=5000, baudrate=9600, rate=1, verbose=True)
         server.start()
 
     except KeyboardInterrupt:
