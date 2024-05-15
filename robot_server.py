@@ -120,7 +120,7 @@ class AsyncServer:
         """
         response = None
         state = 0
-        while self.all_stop != True:
+        while not self.all_stop:
             while response != 'quit' and response !='' and response !='\n':
                 #self.logger("reading")
                 self.response = (await reader.read(MAXBUF)).decode('utf8')
@@ -163,7 +163,7 @@ class AsyncServer:
     async def update(self, interval=100):
         """ Asyncronous co-routing that sends messages to the connected device.
         """
-        while self.all_stop != True: 
+        while not self.all_stop: 
             if self.usb_serial.in_waiting:  
                 while self.usb_serial.in_waiting:            
                     print(self.usb_serial.readline().decode("utf-8"))
